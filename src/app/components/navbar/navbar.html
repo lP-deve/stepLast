@@ -1,0 +1,24 @@
+<header>
+  <div class="logo" routerLink="/" >
+    <img src="/crown.png" alt="Unique Logo">
+    <h1>Unique</h1>
+  </div>
+
+  <nav id="navItems" [class.active]="isMenuOpen">
+    
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</a>
+      <a routerLink="/menu" routerLinkActive="active">Menu</a>
+      <a routerLink="/blog" routerLinkActive="active">Blog</a>
+      <a routerLink="/story" routerLinkActive="active">Our Story</a>
+      <a routerLink="/events" routerLinkActive="active">Event Types</a>
+      <a routerLink="/book" routerLinkActive="active" class="btn-book">Book a Table</a>
+    
+  </nav>
+
+  <label class="burger" for="burger">
+    <input type="checkbox" id="burger" [checked]="isMenuOpen" (change)="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </label>
+</header>

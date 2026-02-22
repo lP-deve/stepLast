@@ -1,0 +1,27 @@
+
+
+    <div class="content-wrapper">
+      <h2>Dining Event Types</h2>
+      <p class="intro-text">
+        We provide dining event for your special day with your important people
+      </p>
+
+      <div class="container">
+        @for (type of events(); track type.id; let i = $index) {
+          <div class="blog" [class.reversing]="i === 1">
+            <div class="info">
+              <h1>{{ type.Title }}</h1>
+              <p>{{ type.text }}</p>
+            </div>
+
+            <img [src]="'https://i-step-project.vercel.app/imgs/' + type.id + '.png'" [alt]="type.Title" (error)="handleImgError($event)">
+          </div>
+        }
+      </div>
+    </div>
+
+    <footer id="footer">
+      <p>&copy; all rights reserved</p>
+      <p class="thaiMsg">A little taste of Thailand in every bite.</p>
+      <p>IT STEP - 2025</p>
+    </footer>

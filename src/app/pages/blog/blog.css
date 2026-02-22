@@ -1,0 +1,187 @@
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+    
+    :host {
+      display: block;
+      font-family: "Montserrat", sans-serif;
+      background-color: #0a0f0f;
+      min-height: 100vh;
+      color: white;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      list-style: none;
+      text-decoration: none;
+      border: none;
+    }
+
+    /* Layout Grids */
+    .main {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-bottom: 40px;
+      gap: 18px;
+      width: 100%;
+      margin-top: 60px;
+    }
+
+    #img {
+     min-height: 800px;
+      width: 100%;
+      filter: brightness(70%);
+      object-fit: cover;
+    }
+
+    .content {
+      min-height: 100vh;
+      width: 100%;
+    }
+
+    /* Background and Hero Section */
+    .news {
+      background-image:url('/bg2.png');
+      background-repeat: no-repeat;
+      background-color: #0b0b0b;
+      width: 100%;
+      background-size: cover;
+      min-height: 100vh;
+      padding-top: 18px;
+    }
+
+    h1 {
+      font-weight: 500;
+      font-size: 32px;
+      color: #FFFFFF;
+      line-height: 90%;
+      text-align: center;
+      transition: color 0.3s;
+    }
+
+    h1:hover { color: #FACE8D; }
+
+    .infos {
+      background-color: #0a0f0f;
+      min-height: 100vh;
+    }
+
+    .cont {
+      width: 100%;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 40px;
+    }
+
+    .hero {
+      width: 60%;
+      margin: 100px auto 0;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero span {
+      color: #FACE8D;
+      font-family: cursive;
+      font-size: 80px;
+      line-height: 90%;
+    }
+
+    .hero h2 {
+      color: #FFFFFF;
+      font-weight: 500;
+      font-size: 60px;
+      line-height: 100%;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    /* Navigation Styling */
+    nav ul {
+      z-index: 99;
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      width: 36vw;
+      background-color: #2d2c2cb7;
+      border-radius: 100px;
+      padding: 18px;
+      margin: 100px auto 0;
+      height: 48px;
+    }
+
+    nav ul a {
+      font-weight: 500;
+      font-size: 14px;
+      color: #FFFFFF;
+      transition: 0.3s;
+    }
+
+    nav ul a:hover { color: #FACE8D; }
+
+    /* Blog Card Styling */
+    .blogs {
+      display: flex;
+      align-items: center;
+      margin: 15px auto;
+      justify-content: center;
+      transition: 0.3s ease-in-out;
+      width: 96%;
+      border: 1px solid rgba(128, 128, 128, 0.133);
+      border-radius: 12px;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .blogs:hover {
+      opacity: 0.8;
+      border: 1px solid #FACE8D;
+      transform: translateY(-2px);
+    }
+
+    .blogs img {
+      border-radius: 10px;
+      margin-right: 20px;
+      width: 280px;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .text { width: 90%; }
+    .text span { font-size: 16px; color: #FACE8D; line-height: 160%; }
+    .text h4 { font-size: 20px; color: #ffffff; margin: 5px 0; }
+    .text p { font-size: 14px; color: #ffffff; line-height: 160%; opacity: 0.6; }
+
+
+    .loading-state { padding: 50px; color: #FACE8D; }
+
+    /* Responsive Design */
+    @media screen and (max-width: 1200px) {
+      .main { grid-template-columns: 1fr; }
+      nav ul { 
+        flex-direction: column; 
+        height: auto; 
+        border-radius: 20px; 
+        width: 50vw; 
+        margin-top: 40px; 
+        gap: 15px; 
+      
+      }
+      #img { display: none; }
+      .blogs { width: 90%; }
+      .hero h2 { font-size: 48px; }
+    }
+
+    @media screen and (max-width: 576px) {
+      .blogs { flex-direction: column; text-align: center; }
+      .blogs img { margin-right: 0; width: 100%; height: auto; }
+      .text p { display: none; }
+      .hero h2 { font-size: 36px; }
+      .hero span { font-size: 50px; }
+    
+    }
+  

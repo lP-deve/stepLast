@@ -1,0 +1,74 @@
+<section class="category-page">
+  <header>
+    <a routerLink="/menu" class="back-link">← Back to Menu</a>
+    <h1>Our Menu</h1>
+    
+    <ul class="tabs">
+      <li (click)="changeCategory('food')" [class.active]="currentType==='food'">Breakfast</li>
+      <li (click)="changeCategory('lunch')" [class.active]="currentType==='lunch'">Lunch</li>
+      <li (click)="changeCategory('dinner')" [class.active]="currentType==='dinner'">Dinner</li>
+      <li (click)="changeCategory('drink')" [class.active]="currentType==='drink'">Drinks</li>
+    </ul>
+  </header>
+
+  <div class="filter-controls">
+    <button class="filter-btn" (click)="showFilters = !showFilters">
+      {{ showFilters ? 'Close Filters' : 'Filters' }}
+    </button>
+  </div>
+
+  <div class="filters-modal" *ngIf="showFilters">
+    <div class="filter-row">
+      <input type="number" [(ngModel)]="minPrice" placeholder="Price from">
+      <input type="number" [(ngModel)]="maxPrice" placeholder="Price to">
+    </div>
+    
+    <div class="filter-row">
+      <label>Sort by calories:</label>
+      <select [(ngModel)]="sortOrder">
+        <option value="">Sort</option>
+        <option value="asc">Low to High</option>
+        <option value="desc">High to Low</option>
+      </select>
+    </div>
+
+    <div class="filter-row">
+      <label>Search:</label>
+      <input type="text" [(ngModel)]="searchQuery" placeholder="Search by name">
+    </div>
+
+    <div class="filter-actions">
+      <button class="submit-btn" (click)="applyFilters()">Submit</button>
+      <button class="reset-btn" (click)="resetFilters()">Remove Filters</button>
+    </div>
+  </div>
+
+  <div *ngIf="isLoading" class="loader-container">
+    <div class="spinner"></div>
+    <p>Loading Delicious Food...</p>
+  </div>
+
+  <div class="grid-container" *ngIf="!isLoading">
+    <div class="card" *ngFor="let item of filteredItems">
+      <h3>{{ item.name }}</h3>
+      
+      <div class="card-body">
+        <div class="card-img">
+          <img [src]="item.image" [alt]="item.name">
+        </div>
+        <div class="card-details">
+          <p><span class="label">Flavour:</span> {{ item.flavor }}</p>
+          <p><span class="label">Calories:</span> {{ item.calories }}</p>
+          <p><span class="label">Size:</span> {{ item.size }}</p>
+          <p><span class="label">Price:</span> {{ item.price }}</p>
+        </div>
+      </div>
+      
+      <p class="ingredients"><span class="label">Ingredients:</span> {{ item.ingredients }}</p>
+    </div>
+  </div>
+
+  <div *ngIf="!isLoading && filteredItems.length === 0" class="no-items">
+    <h4>No items found.</h4>
+  </div>
+</section>

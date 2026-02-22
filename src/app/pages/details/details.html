@@ -1,0 +1,33 @@
+ <section>
+      <!-- Loader -->
+      @if (isLoading()) {
+        <div id="loader" class="loader">
+          {{ errorMessage() || 'Loading blog...' }}
+        </div>
+      }
+
+      <!-- Blog Detail -->
+      @if (!isLoading() && article(); as data) {
+        <div id="blog">
+          <div class="btn">
+            <button id="backBtn" (click)="goBack()">
+              <img src="imgs/arrow (1).png" alt="" (error)="handleImgError($event)"> go back
+            </button>
+          </div>
+
+          <div class="container">
+            <div>
+              <img id="image" [src]="data.image" loading="lazy" [alt]="data.title">
+            </div>
+            <div>
+              <h1 id="title">{{ data.title }}</h1>
+              <h4 id="story">{{ data.story }}</h4>
+              <p class="bigger">{{ data.info }}</p>
+            </div>
+            <div class="timeDiv">
+              <p class="time">Created at: {{ data.createdAt }}</p>
+            </div>
+          </div>
+        </div>
+      }
+    </section>

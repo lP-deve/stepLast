@@ -1,0 +1,15 @@
+ footer {
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #18161a;
+      padding: 0 48px;
+      font-size: 14px;
+      color: #bebdbd;
+      width: 100%;
+    }
+
+     @media screen and (max-width: 576px) {
+      footer { padding: 0 16px; font-size: 12px; }
+    }

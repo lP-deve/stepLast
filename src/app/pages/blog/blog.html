@@ -1,0 +1,66 @@
+<section class="main">
+  <div class="content">
+    <div class="news">
+      <a routerLink="/"><h1>Unique</h1></a>
+
+      <!-- Hero Branding -->
+      <div class="hero">
+        <span>Blog</span>
+        <h2>Latest News</h2>
+      </div>
+
+      <!-- Navigation Menu -->
+      <div class="navItems">
+        <nav>
+          <ul>
+            <li><a routerLink="/menu">Menu</a></li>
+            <li><a routerLink="/blog">Blog</a></li>
+            <li><a routerLink="/story">Our Story</a></li>
+            <li><a routerLink="/events">Event Types</a></li>
+            <li><a routerLink="/book">Book a Table</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <!-- Desktop Hero Sidebar Image -->
+    <img
+      id="img"
+      src="/bl.jpg"
+      alt="Hero Image"
+    />
+  </div>
+
+  <!-- Articles List Section -->
+  <div class="infos">
+    <div class="cont">
+      <!-- Check if articles are available -->
+      <ng-container *ngIf="articles().length > 0; else loading">
+        <div
+          class="blogs"
+          *ngFor="let item of articles()"
+          (click)="navigateToFullBlog(item.id)"
+        >
+          <img
+            [src]="item.image"
+            alt="Article Image"
+            (error)="handleImgError($event)"
+          />
+          <div class="text">
+            <span>{{ parseDate(item.createdAt) | date: 'mediumDate' }}</span>
+            <h4>{{ item.title }}</h4>
+            <p>{{ item.story | slice:0:150 }}...</p>
+          </div>
+        </div>
+      </ng-container>
+
+      <!-- Loading / Empty State -->
+      <ng-template #loading>
+        <div class="loading-state">
+          <p>Fetching the latest blog posts...</p>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</section>
+
+

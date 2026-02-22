@@ -1,0 +1,298 @@
+
+#menu {
+  width: 100%;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: #0a0f0f;
+  margin-top: 60px;
+}
+main{
+  background-color: #000000;
+}
+
+
+.checkout {
+  background-image: url('/menu.png'); 
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  padding-top: 16px;
+  display: flex;
+  flex-direction: column;
+}
+li{
+  list-style: none;
+}
+a{
+  text-decoration: none;
+}
+
+.img img {
+  height: 600px;
+  width: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+#coverimg {
+  object-fit: cover;
+
+}
+
+.mynavigationItems {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 38vw;
+  background-color: rgba(45, 44, 44, 0.72);
+  border-radius: 100px;
+  margin: 120px auto 0 auto;
+  height: 48px;
+  padding-inline: 22px;
+}
+
+.mynavigationItems li a {
+  font-weight: 500;
+  font-size: 14px;
+  color: #d5d5d5;
+  transition: 0.3s;
+}
+
+.mynavigationItems li a:hover {
+  color: #FACE8D;
+}
+
+h1 {
+  font-weight: 500;
+  font-size: 32px;
+  color: #ffff;
+  text-align: center;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+h1:hover {
+  color: #FACE8D;
+}
+
+/* Hero Section */
+.hero {
+  width: 60%;
+  margin: 220px auto 0 auto;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero span {
+  color: #FACE8D;
+  font-family: "Bitter Rose", cursive;
+  font-weight: 400;
+  font-size: 80px;
+  line-height: 90%;
+}
+
+.hero h2 {
+  color: #FFFFFF;
+  font-family: cursive;
+  font-weight: 500;
+  font-size: 60px;
+  line-height: 100%;
+}
+
+/* --- RIGHT SIDE (Food List) --- */
+.foodList {
+  padding-top: 16px;
+  width: 100%;
+  background-color: #0a0f0f;
+  padding-bottom: 50px;
+}
+
+.categories nav ul#innerPageNav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 30vw;
+  margin: auto;
+}
+
+.categories nav ul#innerPageNav li a {
+  font-weight: 500;
+  font-size: 14px;
+  color: #d5d5d5;
+  transition: 0.3s;
+}
+
+.categories nav ul#innerPageNav li a:hover {
+  color: #FACE8D;
+}
+
+/* Section Headers */
+.starters {
+  width: 80%;
+  margin: auto;
+}
+
+.starters h3 {
+  color: #FACE8D;
+  font-family: "Bitter Rose", cursive;
+  font-weight: 400;
+  font-size: 64px;
+  margin-top: 30px;
+  line-height: 70%;
+}
+
+.starters button {
+  background: linear-gradient(97deg, #634830, #ec9004);
+  border-radius: 8px;
+  padding: 6px 16px;
+  font-weight: 500;
+  font-size: 16px;
+  color: #000000;
+  transition: 0.3s;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+
+.starters button:hover {
+  background: linear-gradient(90deg, #d0b60f, #ec9004);
+}
+
+/* Individual Food Card */
+.food {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 32px;
+  margin-bottom: 16px;
+  transition: 0.3s;
+  padding-right: 12px;
+  box-shadow: rgba(58, 57, 57, 0.189) 0px 1px 4px;
+}
+
+.food:hover {
+  opacity: 0.7;
+  border: 1px solid #FACE8D;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.food:hover h6 {
+  color: #FACE8D;
+}
+
+.food .align {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.food .align img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.food .align h6 {
+  font-weight: 400;
+  font-size: 18px;
+  color: #ffffffca;
+  margin-bottom: 5px;
+}
+
+.food .align p {
+  font-weight: 400;
+  font-size: 14px;
+  color: #ffffff5e;
+}
+
+.food > span {
+  font-weight: 400;
+  font-size: 16px;
+  color: #ffffff5e;
+}
+
+/* --- RESPONSIVE --- */
+@media screen and (max-width: 1200px) {
+  #menu {
+    grid-template-columns: 1fr;
+  }
+  
+  .mynavigationItems {
+    background: none;
+    flex-direction: column;
+    gap: 22px;
+    padding: 0;
+    width: 90vw;
+    height: auto;
+    margin-top: 50px;
+  }
+
+  .checkout {
+    min-height: auto;
+    padding-bottom: 40px;
+  }
+  
+  .foodList {
+    padding-top: 40px !important;
+  }
+  
+  #innerPageNav {
+    width: 60vw;
+  }
+  
+  .img img {
+    display: none;
+  }
+}
+.loading-state {
+  text-align: center;
+  padding: 50px;
+  color: #FACE8D;
+  font-size: 1.2rem;
+}
+
+.spinner {
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-left-color: #FACE8D;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 15px auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@media screen and (max-width: 576px) {
+  .food {
+    flex-direction: column;
+    align-items: start;
+    gap: 10px;
+  }
+  
+  .food p, .food > span {
+    display: none;
+  }
+  
+  #innerPageNav, .thaiMsg {
+    display: none;
+  }
+  
+  .hero span {
+    font-size: 60px;
+  }
+  
+  .hero h2 {
+    font-size: 40px;
+  }
+}

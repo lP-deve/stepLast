@@ -1,0 +1,132 @@
+<main>
+  <section id="menu">
+  
+  <div class="main">
+    <div class="checkout">
+      <a routerLink="/" class="logo-link">
+        <h1>Unique</h1>
+      </a>
+      <div class="hero">
+        <span>check out</span>
+        <h2>our menus</h2>
+      </div>
+      <div class="navItems">
+        <nav>
+          <ul class="mynavigationItems">
+            <li><a routerLink="/menu">Menu</a></li>
+            <li><a routerLink="/blog">Blog</a></li>
+            <li><a routerLink="/story">Our Story</a></li>
+            <li><a routerLink="/events">Event Types</a></li>
+            <li><a routerLink="/book">Book a Table</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <div class="img">
+      <img src="/brasserie.jpeg" alt="Menu">
+       <img src="/igh.jpeg" alt="">
+      <img id="coverimg" src="/mgbg2.jpg" alt="Menu Cover">
+     
+    </div>
+  </div>
+
+  <div class="foodList">
+    
+    <div *ngIf="isLoading" class="loading-state" style="text-align: center; color: white; padding: 50px;">
+      <div class="spinner"></div>
+      <p>Loading Menu...</p>
+    </div>
+
+    <div *ngIf="!isLoading">
+      
+      <!-- <div class="categories">
+        <nav>
+          <ul id="innerPageNav">
+            <li><a href="#first">Breakfast</a></li>
+            <li><a href="#second">Dinner</a></li>
+            <li><a href="#third">Supper</a></li>
+            <li><a href="#fourth">Drinks</a></li>
+          </ul>
+        </nav>
+      </div> -->
+
+      <div class="starters" id="first">
+        <h3 id="starters">Breakfast</h3>
+        
+        <div class="food" *ngFor="let item of breakfastItems | slice:0:3">
+          <div class="align">
+            <img [src]="item.image" [alt]="item.name">
+            <div>
+              <h6>{{ item.name }}</h6>
+              <p>{{ item.ingredients }}</p>
+            </div>
+          </div>
+          <span>{{ item.price }}</span>
+        </div>
+
+        <p *ngIf="breakfastItems.length === 0" style="color:white; opacity:0.7;">No breakfast items found.</p>
+
+        <button class="btn1" (click)="seeMore('food')">see more</button>
+      </div>
+
+      <div class="starters" id="second">
+        <h3 id="breakfast">Dinner</h3>
+
+        <div class="food" *ngFor="let item of dinnerItems | slice:0:3">
+          <div class="align">
+            <img [src]="item.image" [alt]="item.name">
+            <div>
+              <h6>{{ item.name }}</h6>
+              <p>{{ item.ingredients }}</p>
+            </div>
+          </div>
+          <span>{{ item.price }}</span>
+        </div>
+
+        <p *ngIf="dinnerItems.length === 0" style="color:white; opacity:0.7;">No dinner items found.</p>
+
+        <button class="btn2" (click)="seeMore('lunch')">see more</button>
+      </div>
+
+      <div class="starters" id="third">
+        <h3 id="dinner">Supper</h3>
+
+        <div class="food" *ngFor="let item of supperItems | slice:0:3">
+          <div class="align">
+            <img [src]="item.image" [alt]="item.name">
+            <div>
+              <h6>{{ item.name }}</h6>
+              <p>{{ item.ingredients }}</p>
+            </div>
+          </div>
+          <span>{{ item.price }}</span>
+        </div>
+
+        <p *ngIf="supperItems.length === 0" style="color:white; opacity:0.7;">No supper items found.</p>
+
+        <button class="btn3" (click)="seeMore('dinner')">see more</button>
+      </div>
+
+      <div class="starters" id="fourth">
+        <h3 id="drinks">Drinks</h3>
+
+        <div class="food" *ngFor="let item of drinkItems | slice:0:3">
+          <div class="align">
+            <img [src]="item.image" [alt]="item.name">
+            <div>
+              <h6>{{ item.name }}</h6>
+              <p>{{ item.ingredients }}</p>
+            </div>
+          </div>
+          <span>{{ item.price }}</span>
+        </div>
+
+        <p *ngIf="drinkItems.length === 0" style="color:white; opacity:0.7;">No drinks found.</p>
+
+        <button class="btn4" (click)="seeMore('drink')">see more</button>
+      </div>
+
+    </div> </div>
+</section>
+</main>
+

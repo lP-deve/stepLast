@@ -1,0 +1,80 @@
+.hero {
+  height: 100vh;
+  background: url('/menu.png') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  background-color: #1a1a1a;
+ flex-direction: column;
+   width: 100%;
+
+}
+
+.subtitle {
+  font-size: 3.8rem;
+  font-weight: 300;
+  color: #cbad63;
+  margin-bottom: 20px;
+  margin-top: 40px;
+  width: 100%;
+  max-width: 800px;
+
+}
+
+
+
+.description {
+  font-size: 1.6rem;
+  line-height: 1.6;
+  opacity: 0.8;
+}
+
+
+
+.hero-content {
+  max-width: 600px;
+}
+
+
+
+h6 {
+  font-size: 2rem;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  color: #c1ac66;
+  margin-top: 30px;
+}
+
+.hours-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  max-width: 360px;
+  margin: 0 auto;
+  padding:20px;
+  border-radius: 12px;
+  backdrop-filter: blur(20px);
+  background: linear-gradient(120deg, rgba(255, 166, 0, 0.19), rgba(0, 0, 0, 0.251));
+}
+
+.day-row {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #333;
+  padding-bottom: 0.5rem;
+}
+
+.closed {
+  color: #e0d283;
+}
+
+
+
+
+main {
+  background-color: #000000 !important;
+  width: 100%;
+}

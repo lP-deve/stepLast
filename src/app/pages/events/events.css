@@ -1,0 +1,181 @@
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+    :host {
+      display: block;
+      width: 100%;
+      min-height: 100vh;
+      background-color: rgb(16, 16, 16);
+      font-family: "Montserrat", sans-serif;
+      color: ghostwhite;
+    }
+
+    .content-wrapper {
+      padding-top: 80px;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column-reverse;
+      gap: 120px;
+      width: 86vw;
+      margin: 0 auto;
+      padding-bottom: 120px;
+    }
+
+    .blog {
+      display: grid;
+      grid-template-columns: 400px 1fr;
+      background-color: rgb(17, 18, 18);
+      place-content: center;
+      place-items: center;
+      border: 1px solid rgb(246, 215, 158);
+      border-radius: 4px;
+      padding: 16px;
+      transition: 0.3s;
+    }
+
+    .blog:hover {
+      box-shadow: rgba(255, 255, 255, 0.025) 0px 3px 8px;
+      border: 1px solid rgb(165, 165, 165);
+      cursor: pointer;
+    }
+
+    .blog img {
+      width: 100%;
+      min-height: 280px;
+      border-radius: 4px;
+      object-fit: cover;
+    }
+
+    h1 {
+      font-size: 60px;
+      color: rgb(247, 195, 133);
+      text-align: center;
+      font-family: cursive; /* Fallback for 'Bitter Rose' */
+    }
+
+    h2 {
+      font-size: 40px !important;
+      color: rgb(246, 215, 158);
+      text-align: center;
+      margin-top: 68px;
+      font-family: cursive;
+    }
+
+    .blog div p {
+      font-size: 16px;
+      color: rgb(255, 255, 255); 
+      width: 340px;
+      margin-top: 16px;
+      text-align: center;
+    }
+
+    .intro-text {
+      color: ghostwhite;
+      font-size: 20px;
+      margin: 20px auto 60px;
+      width: 600px;
+      text-align: center;
+    }
+
+    /* Reversing logic specifically for the second item */
+    .blog.reversing {
+      display: flex;
+      align-items: center;
+      flex-direction: row-reverse;
+      width: 100%;
+      gap: 16px;
+    }
+
+    .blog.reversing .info {
+      width: 400px;
+      flex-shrink: 0;
+    }
+
+    .blog.reversing img {
+      flex: 1;
+      min-width: 0;
+      min-height: 280px;
+      width: 100%;
+      height: auto;
+    }
+
+    .nav {
+      width: 100%;
+      background-color: #18161a;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 99999;
+    }
+
+    nav ul {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      width: 35vw;
+      margin: auto;
+      padding-block: 12px;
+      list-style: none;
+    }
+
+    ul a {
+      font-weight: 500;
+      font-size: 17px;
+      color: #efb03c;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    ul a:hover {
+      color: hsl(42, 68%, 79%);
+    }
+
+    #footer {
+      background-color: #18161a;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      padding-inline: 40px;
+      z-index: 100;
+    }
+
+    #footer p {
+      font-size: 14px;
+      margin: 0;
+      color: #cbcaca;
+      width: fit-content;
+    }
+
+    @media screen and (max-width: 1200px) {
+      .container { width: 96%; padding: 12px; margin-bottom: 100px; }
+      .blog { grid-template-columns: 220px 1fr; }
+      h1 { font-size: 40px; }
+      .blog div p { width: 180px; }
+      .intro-text { font-size: 22px; max-width: 500px; width: 100%; }
+      .blog.reversing img { height: 280px; }
+      nav ul { width: 60vw; }
+      .blog.reversing .info { order: 2; width: 220px; }
+      ul a { font-size: 12px; }
+      #footer p { font-size: 12px !important; }
+      .thaiMsg { display: none; }
+    }
+
+    @media screen and (max-width: 600px) {
+      .container { width: 100%; padding: 12px; }
+      .blog { grid-template-columns: 1fr; gap: 0px; }
+      .blog.reversing { display: flex; flex-direction: column; height: auto; }
+      .blog.reversing img { width: 100% !important; height: 260px !important; }
+      h1 { font-size: 30px; }
+      h2 { font-size: 28px; }
+      .blog div p { font-size: 14px; width: 180px; margin-bottom: 16px; }
+      .intro-text { font-size: 16px; max-width: 400px; }
+      nav ul { width: 90%; }
+      ul a { font-size: 10px; }
+      #footer { padding-inline: 10px; }
+    }
