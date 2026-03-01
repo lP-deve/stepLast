@@ -5,7 +5,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      background-color: #070707ec;
+      background-color: #070707;
       width: 100%;
       padding-block: 6px;
       position: fixed;
@@ -103,7 +103,7 @@
         left: -120%;
         width: 100vw;
         height: 100vh;
-        background-color: #2520188b;
+        background-color: #1b1b1ae9;
         backdrop-filter: blur(16px);
         z-index: 9999;
         transition: left 0.3s ease;
@@ -120,7 +120,8 @@
 
     @media screen and (max-width: 576px) {
       .container { grid-template-columns: 1fr; }
-      a { font-size: 12px; }
+      a { font-size: 14px; 
+      font-family: cursive;}
       .text p { font-size: 16px; }
       h2 { font-size: 22px; }
       header { padding-inline: 8px; }

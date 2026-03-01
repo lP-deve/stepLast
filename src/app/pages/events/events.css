@@ -9,10 +9,15 @@
       color: ghostwhite;
     }
 
+
     .content-wrapper {
       padding-top: 80px;
+        min-height: 100vh;
+      background-color: rgb(16, 16, 16);
+      
     }
 
+   
     .container {
       display: flex;
       flex-direction: column-reverse;
@@ -20,6 +25,7 @@
       width: 86vw;
       margin: 0 auto;
       padding-bottom: 120px;
+    
     }
 
     .blog {
@@ -48,10 +54,10 @@
     }
 
     h1 {
-      font-size: 60px;
+      font-size: 66px;
       color: rgb(247, 195, 133);
-      text-align: center;
-      font-family: cursive; /* Fallback for 'Bitter Rose' */
+      text-align: center; 
+      font-family: "Bitter Rose", cursive;
     }
 
     h2 {
@@ -78,7 +84,7 @@
       text-align: center;
     }
 
-    /* Reversing logic specifically for the second item */
+
     .blog.reversing {
       display: flex;
       align-items: center;

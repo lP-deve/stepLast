@@ -76,7 +76,7 @@ h1:hover {
   color: #FACE8D;
 }
 
-/* Hero Section */
+
 .hero {
   width: 60%;
   margin: 220px auto 0 auto;
@@ -102,7 +102,6 @@ h1:hover {
   line-height: 100%;
 }
 
-/* --- RIGHT SIDE (Food List) --- */
 .foodList {
   padding-top: 16px;
   width: 100%;
@@ -129,7 +128,7 @@ h1:hover {
   color: #FACE8D;
 }
 
-/* Section Headers */
+
 .starters {
   width: 80%;
   margin: auto;

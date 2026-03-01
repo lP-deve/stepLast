@@ -7,3 +7,8 @@
 button, input{
     cursor: pointer;
 }
+
+@font-face {
+    font-family: "Bitter Rose";
+    src: url('/Bitter Rose DEMO.otf');
+}
