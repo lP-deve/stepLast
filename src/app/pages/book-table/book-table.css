@@ -295,6 +295,9 @@ button:disabled {
     margin-left: 5px;
 }
 
+h1{
+    color: #ffffff!important;
+}
 .signup-fields {
     display: grid;
     grid-template-columns: 1fr 1fr;
