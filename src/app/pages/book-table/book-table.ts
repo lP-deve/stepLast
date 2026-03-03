@@ -194,12 +194,23 @@ export class Book implements OnInit, OnDestroy {
     } finally { this.loading.set(false); }
   }
 
-  async deleteBooking(id: string) {
-    const uid = this.userId();
-    if (!uid || !confirm('Cancel this reservation?')) return;
+   async deleteBooking(id: string) {
+  const uid = this.userId();
+  
+  
+  if (!uid) return; 
+
+  try {
+  
     await deleteDoc(doc(this.db, `artifacts/${this.appId}/users/${uid}/reservations/${id}`));
+    
+
     this.showStatus("Reservation removed");
+  } catch (error) {
+    console.error("Delete failed:", error);
+    this.showStatus("Error removing reservation");
   }
+}
 
   startEdit(item: any) {
     this.editingId.set(item.id);
