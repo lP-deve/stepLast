@@ -68,8 +68,8 @@ h1 {
 /* Filter Modal */
 .filters-modal {
   position: absolute;
-  top: 70px;
-  left: 0;
+  top: 200px;
+  left:200px;
   background: #222;
   border: 1px solid #444;
   padding: 20px;

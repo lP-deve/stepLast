@@ -1,275 +1,132 @@
-<main><div *ngIf="!token()" class="auth-page">
+<main>
+  <div *ngIf="!token()" class="auth-page">
+    <div class="auth-container">
+      <div class="auth-box">
+        <h1>Unique</h1>
+        <h3>{{ view() === 'signin' ? 'Sign In' : 'Create Account' }}</h3>
 
-  <div class="auth-container">
-
-    <div class="auth-box">
-
-      <h1>Unique</h1>
-
-      <h3>{{ view() === 'signin' ? 'Sign In' : 'Create Account' }}</h3>
-
-     
-
-      <form class="myform" (submit)="view() === 'signin' ? handleSignIn($event) : handleSignUp($event)">
-
-        <div *ngIf="view() === 'signup'" class="signup-fields">
-
-          <div class="input">
-
-            <label>First Name</label>
-
-            <input [(ngModel)]="authForm.firstName" name="fName" required placeholder="First Name">
-
+        <form class="myform" (submit)="view() === 'signin' ? handleSignIn($event) : handleSignUp($event)">
+          <div *ngIf="view() === 'signup'" class="signup-fields">
+            <div class="input">
+              <label>First Name</label>
+              <input [(ngModel)]="authForm.firstName" name="fName" required placeholder="First Name">
+            </div>
+            <div class="input">
+              <label>Last Name</label>
+              <input [(ngModel)]="authForm.lastName" name="lName" required placeholder="Last Name">
+            </div>
           </div>
 
           <div class="input">
-
-            <label>Last Name</label>
-
-            <input [(ngModel)]="authForm.lastName" name="lName" required placeholder="Last Name">
-
-          </div>
-
-        </div>
-
-
-
-        <div class="input">
-
-          <label>Email</label>
-
-          <input type="email" [(ngModel)]="authForm.email" name="email" required placeholder="email@example.com">
-
-        </div>
-
-
-
-        <div class="input">
-
-          <label>Password</label>
-
-          <input type="password" [(ngModel)]="authForm.password" name="pass" required placeholder="••••••••">
-
-        </div>
-
-
-
-        <button type="submit" class="auth-btn" [disabled]="loading()">
-
-          {{ loading() ? 'Please wait...' : (view() === 'signin' ? 'Login' : 'Register') }}
-
-        </button>
-
-      </form>
-
-
-
-      <div class="auth-toggle">
-
-        <p *ngIf="view() === 'signin'">
-
-          New here? <span (click)="view.set('signup')">Create an account</span>
-
-        </p>
-
-        <p *ngIf="view() === 'signup'">
-
-          Already have an account? <span (click)="view.set('signin')">Sign in instead</span>
-
-        </p>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
-
-
-
-<section *ngIf="token()" class="main">
-
-  <div class="reservation">
-
-    <a  (click)="logout()"><h1>Unique</h1></a>
-
-    <span>Book a Table</span>
-
-    <h2>Reservation</h2>
-
-    <div class="navItems">
-
-      <nav>
-
-        <ul>
-
-          <li><a (click)="setTab('form')" [class.active]="activeTab() === 'form'">Book a Table</a></li>
-
-          <li><a (click)="setTab('history')" [class.active]="activeTab() === 'history'">See Bookings</a></li>
-
-          <li><a (click)="logout()">Sign Out</a></li>
-
-        </ul>
-
-      </nav>
-
-    </div>
-
-  </div>
-
-
-
-  <div class="bookATable">
-
-    <div class="details-of-booking">
-
-     
-
-      <ng-container *ngIf="activeTab() === 'form'">
-
-        <h3>Book a table</h3>
-
-        <p>Our dining atmosphere is casual and comfortable.</p>
-
-        <form (submit)="saveBooking($event)">
-
-          <div class="input">
-
-            <label>Name</label>
-
-            <input required [(ngModel)]="bookingForm.name" name="bName">
-
+            <label>Email</label>
+            <input type="email" [(ngModel)]="authForm.email" name="email" required placeholder="email@example.com">
           </div>
 
           <div class="input">
-
-            <label>Number of guests</label>
-
-            <input type="number" [(ngModel)]="bookingForm.guests" name="bGuests">
-
+            <label>Password</label>
+            <input type="password" [(ngModel)]="authForm.password" name="pass" required placeholder="••••••••">
           </div>
 
-          <div class="twoinput">
-
-            <div class="input"><label>Date</label><input type="date" [(ngModel)]="bookingForm.date" name="bDate"></div>
-
-            <div class="input"><label>Time</label><input type="time" [(ngModel)]="bookingForm.time" name="bTime"></div>
-
-          </div>
-
-          <button type="submit" [disabled]="loading()">Book a table</button>
-
+          <button type="submit" class="auth-btn" [disabled]="loading()">
+            {{ loading() ? 'Please wait...' : (view() === 'signin' ? 'Login' : 'Register') }}
+          </button>
         </form>
 
-      </ng-container>
-
-
-
-      <ng-container *ngIf="activeTab() === 'history'">
-
-        <h3>Your Bookings</h3>
-
-        <div class="booking-history-list">
-
-          <div *ngFor="let item of bookings()" class="history-item">
-
-           
-
-            <div *ngIf="editingId() !== item.id" class="history-content">
-
-              <div class="info">
-
-                <strong>{{item.name}}</strong>
-
-                <span>{{item.date}} at {{item.time}} — {{item.guests}} Guests</span>
-
-              </div>
-
-              <div class="actions">
-
-                <button (click)="startEdit(item)" class="edit-btn">Edit</button>
-
-                <button (click)="deleteBooking(item.id)" class="del-btn">Delete</button>
-
-              </div>
-
-            </div>
-
-
-
-            <div *ngIf="editingId() === item.id" class="inline-edit">
-
-              <div class="input">
-
-                <label>Edit Name</label>
-
-                <input [(ngModel)]="editForm.name" name="editName">
-
-              </div>
-
-             
-
-              <div class="input">
-
-                <label>Edit Guests</label>
-
-                <input type="number" [(ngModel)]="editForm.guests" name="editGuests">
-
-              </div>
-
-
-
-              <div class="twoinput">
-
-                <div class="input">
-
-                  <label>Edit Date</label>
-
-                  <input type="date" [(ngModel)]="editForm.date" name="editDate">
-
-                </div>
-
-                <div class="input">
-
-                  <label>Edit Time</label>
-
-                  <input type="time" [(ngModel)]="editForm.time" name="editTime">
-
-                </div>
-
-              </div>
-
-
-
-              <div class="twoinput">
-
-                <button (click)="updateBooking(item.id)" class="save-btn">Update</button>
-
-                <button (click)="editingId.set(null)" class="cancel-btn">Cancel</button>
-
-              </div>
-
-            </div>
-
-
-
-          </div>
-
-          <div *ngIf="bookings().length === 0" class="empty-msg">No bookings found.</div>
-
+        <div class="auth-toggle">
+          <p *ngIf="view() === 'signin'">
+            New here? <span (click)="view.set('signup')">Create an account</span>
+          </p>
+          <p *ngIf="view() === 'signup'">
+            Already have an account? <span (click)="view.set('signin')">Sign in instead</span>
+          </p>
         </div>
-
-      </ng-container>
-
+      </div>
     </div>
-
   </div>
 
- 
+  <section *ngIf="token()" class="main">
+    <div class="reservation">
+      <a (click)="logout()"><h1>Unique</h1></a>
+      <span>Book a Table</span>
+      <h2>Reservation</h2>
 
-  <div class="success" [class.show]="status()"><h1>{{status()}}</h1></div>
+      <div class="navItems">
+        <nav>
+          <ul>
+            <li><a (click)="setTab('form')" [class.active]="activeTab() === 'form'">Book a Table</a></li>
+            <li><a (click)="setTab('history')" [class.active]="activeTab() === 'history'">See Bookings</a></li>
+            <li><a (click)="logout()">Sign Out</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
 
-</section>
+    <div class="bookATable">
+      <div class="details-of-booking">
 
+        <ng-container *ngIf="activeTab() === 'form'">
+          <h3>Book a table</h3>
+          <p>Our dining atmosphere is casual and comfortable.</p>
+          <form (submit)="saveBooking($event)">
+            <div class="input">
+              <label>Name</label>
+              <input required [(ngModel)]="bookingForm.name" name="bName">
+            </div>
+            <div class="input">
+              <label>Number of guests</label>
+              <input type="number" [(ngModel)]="bookingForm.guests" name="bGuests">
+            </div>
+            <div class="twoinput">
+              <div class="input"><label>Date</label><input type="date" [(ngModel)]="bookingForm.date" name="bDate"></div>
+              <div class="input"><label>Time</label><input type="time" [(ngModel)]="bookingForm.time" name="bTime"></div>
+            </div>
+            <button type="submit" [disabled]="loading()">Book a table</button>
+          </form>
+        </ng-container>
+
+        <ng-container *ngIf="activeTab() === 'history'">
+          <h3>Your Bookings</h3>
+          <div class="booking-history-list">
+            <div *ngFor="let item of bookings()" class="history-item">
+              
+              <div *ngIf="editingId() !== item.id" class="history-content">
+                <div class="info">
+                  <strong>{{item.name}}</strong>
+                  <span>{{item.date}} at {{item.time}} — {{item.guests}} Guests</span>
+                </div>
+                <div class="actions">
+                  <button (click)="startEdit(item)" class="edit-btn">Edit</button>
+                  <button (click)="deleteBooking(item.id)" class="del-btn">Delete</button>
+                </div>
+              </div>
+
+              <div *ngIf="editingId() === item.id" class="inline-edit">
+                <div class="input">
+                  <label>Edit Name</label>
+                  <input [(ngModel)]="editForm.name" name="editName">
+                </div>
+                <div class="input">
+                  <label>Edit Guests</label>
+                  <input type="number" [(ngModel)]="editForm.guests" name="editGuests">
+                </div>
+                <div class="twoinput">
+                  <div class="input"><label>Edit Date</label><input type="date" [(ngModel)]="editForm.date" name="editDate"></div>
+                  <div class="input"><label>Edit Time</label><input type="time" [(ngModel)]="editForm.time" name="editTime"></div>
+                </div>
+                <div class="twoinput">
+                  <button (click)="updateBooking(item.id)" class="save-btn">Update</button>
+                  <button (click)="editingId.set(null)" class="cancel-btn">Cancel</button>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="bookings().length === 0" class="empty-msg">No bookings found.</div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="success" [class.show]="status()">
+      <h1>{{status()}}</h1>
+    </div>
+  </section>
 </main>

@@ -39,14 +39,14 @@ export class MenuComponent implements OnInit {
         
         this.isLoading = false; 
 
-        // 3. FORCE Angular to update the view right now
+     
         this.cd.detectChanges(); 
       },
       error: (err) => {
         console.error('Error fetching menu:', err);
         this.isLoading = false;
         
-        // Update view even if there is an error (to remove spinner)
+        
         this.cd.detectChanges();
       }
     });

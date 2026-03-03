@@ -21,6 +21,9 @@ main{
   display: flex;
   flex-direction: column;
 }
+button{
+  border: none;;
+}
 li{
   list-style: none;
 }

@@ -25,12 +25,13 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       margin: auto;
-      background-color: #080808;
+      background-color: #08080872;
       padding: 12px 30px;
       gap: 22px;
       border-radius: 16px;
       margin-top: 12px;
-      border: 1px solid rgba(128, 128, 128, 0.107);
+      margin-bottom: 60px;
+    
     }
 
     .container div:nth-child(2) {
@@ -99,9 +100,12 @@
       width: 16px;
       height: 16px;
     }
+    img {
+      object-fit: cover !important;
+    }
 
     .time {
-        color: #e1e1e1;
+        color: #fdd17aef;
         text-align: center;
         font-family: cursive;
         margin-top: 10px;
