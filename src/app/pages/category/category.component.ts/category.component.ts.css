@@ -64,19 +64,28 @@ h1 {
   cursor: pointer;
   font-weight: bold;
 }
-
+button{
+ transition: all 0.5 ease;
+}
+button:hover {
+ opacity: 0.7;
+}
 /* Filter Modal */
 .filters-modal {
   position: absolute;
   top: 200px;
   left:200px;
-  background: #222;
+  background: #151515;
   border: 1px solid #444;
   padding: 20px;
   border-radius: 10px;
   z-index: 100;
   width: 300px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  transition: all 0.5s ease;
+}
+.filters-modal:hover{
+  outline: 1px solid #FACE8D;
 }
 h4{
   text-align: center;
@@ -114,11 +123,29 @@ input, select {
 
 /* Cards */
 .card {
-  background: white;
+  background:#082a48;
   color: black;
   border-radius: 12px;
+  
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: end;
+  transition: all 0.5;
+  cursor: pointer;
+}
+.card:hover{
+  outline: 1px solid #FACE8D;
+}
+.card_content {
+  background: rgba(0,0,0,0.8);
   padding: 15px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+ height: 100%;
+  color: white;
+ width: 50%;
+
+ border-bottom-right-radius: 12px;
+  border-top-right-radius: 12px;
 }
 
 .card h3 {
@@ -142,10 +169,14 @@ input, select {
 .card-details p {
   margin: 4px 0;
   font-size: 0.9rem;
+
 }
+.card-details span {
+  margin-right: 10px;}
+
 
 .label {
-  color: #800000;
+  color: #FACE8D;
   font-weight: bold;
 }
 
@@ -162,7 +193,7 @@ input, select {
   align-items: center;
   justify-content: center;
   min-height: 300px;
-  color: #FACE8D; /* Matches your theme gold/yellow */
+  color: #FACE8D; 
 }
 
 .spinner {

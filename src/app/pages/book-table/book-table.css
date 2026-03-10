@@ -82,7 +82,6 @@
     color: #FACE8D !important;
 }
 
-/* --- Right Side: Form & Content --- */
 .bookATable {
     margin-top: 60px;
     padding-top: 50px;
@@ -115,7 +114,6 @@ h3 {
     margin-bottom: 30px;
 }
 
-/* --- Input Stylings (Fixed as requested) --- */
 .input {
     display: flex;
     flex-direction: column;
@@ -128,6 +126,7 @@ label {
     font-size: 16px;
     color: #ffffff;
 }
+
 
 input {
     width: 100%;
@@ -151,13 +150,14 @@ input:focus {
     width: 100%;
 }
 
-/* --- Buttons --- */
 button {
     border: none;
+    transition: all 0.5s ease;
 }
 
 button[type="submit"],
-.btn-action {
+.btn-action,
+.auth-btn {
     width: 100%;
     margin-bottom: 8px;
     margin-top: 20px;
@@ -185,11 +185,13 @@ button[type="submit"],
     font-size: 12px !important;
     transition: 0.3s ease-in-out;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 button:hover {
-    background: linear-gradient(135deg, #473927, #f7b748);
-    transform: translateY(-2px);
+    transform:scale(1.05);
 }
 
 button:disabled {
@@ -210,7 +212,7 @@ button:disabled {
     border: 1px solid #ffffff1a;
     padding: 24px;
     border-radius: 16px;
-    transition: 0.3s;
+    transition: all 0.3s;
 }
 
 .history-item:hover {
@@ -241,25 +243,17 @@ button:disabled {
     gap: 12px;
 }
 
-.edit-btn {
-    background: #FACE8D;
-    color: #000;
+.edit-btn, .del-btn {
     padding: 8px 16px;
     border-radius: 8px;
-    font-weight: 600;
-    font-size: 12px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.del-btn {
-    background: #ff4d4d;
-    color: #fff;
-    padding: 8px 16px;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 12px;
-    cursor: pointer;
-}
+.edit-btn { background: #FACE8D; }
+.del-btn { background: #ff4d4d; }
 
 /* --- Authentication --- */
 .auth-page {
@@ -295,9 +289,6 @@ button:disabled {
     margin-left: 5px;
 }
 
-h1{
-    color: #ffffff!important;
-}
 .signup-fields {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -311,6 +302,7 @@ h1{
     left: 50%;
     transform: translate(-50%, -50%);
     width: 450px;
+    max-width: 90vw;
     padding: 30px;
     background-color: rgba(13, 13, 13, 0.98);
     text-align: center;
@@ -331,6 +323,14 @@ h1{
     color: #facc87;
     font-size: 24px;
     font-family: cursive;
+    margin-bottom: 0;
+}
+
+.empty-msg {
+    color: #fff;
+    text-align: center;
+    font-family: cursive;
+    opacity: 0.6;
 }
 
 /* --- Media Queries --- */
@@ -351,8 +351,10 @@ h1{
         border-radius: 20px;
         gap: 10px;
     }
+    .auth-container{
+        width: 90vw;
+        margin:auto;
+    }
 }
 
-li{
-    font-family: cursive;
-}
+li { font-family: cursive; }

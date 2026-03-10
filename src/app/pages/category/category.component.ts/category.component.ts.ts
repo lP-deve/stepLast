@@ -16,9 +16,8 @@ export class CategoryComponent implements OnInit {
   filteredItems: MenuItem[] = []; 
   
   currentType: string = ''; 
-  isLoading: boolean = true; // 1. Added Loading Variable
+  isLoading: boolean = true; 
   
-  // Filter variables
   minPrice: number | null = null;
   maxPrice: number | null = null;
   sortOrder: string = '';
@@ -32,21 +31,21 @@ export class CategoryComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.isLoading = true; // Start loading...
+    this.isLoading = true; 
 
-    // 2. Fetch data FIRST
+ 
     this.menuService.getMenu().subscribe({
       next: (data) => {
         this.allItems = data;
 
-        // 3. AFTER data arrives, check the URL (e.g., ?type=drink)
+       
         this.route.queryParams.subscribe(params => {
           this.currentType = params['type'] || 'food'; 
           
-          // 4. Filter immediately based on the URL
+         
           this.filterByType();
           
-          this.isLoading = false; // Stop loading
+          this.isLoading = false; 
         });
       },
       error: (err) => {
@@ -57,10 +56,9 @@ export class CategoryComponent implements OnInit {
   }
 
   filterByType() {
-    // Filter the items based on the type ('food', 'lunch', 'dinner', 'drink')
+   
     this.filteredItems = this.allItems.filter(item => item.type === this.currentType);
-    
-    // Reset filters UI
+  
     this.minPrice = null;
     this.maxPrice = null;
     this.searchQuery = '';
@@ -68,7 +66,7 @@ export class CategoryComponent implements OnInit {
   }
 
   changeCategory(type: string) {
-    // Navigate to new type, which triggers the code in ngOnInit again
+
     this.router.navigate([], { 
       relativeTo: this.route,
       queryParams: { type: type },
@@ -99,6 +97,6 @@ export class CategoryComponent implements OnInit {
   }
 
   resetFilters() {
-    this.filterByType(); // Resets to original category list
+    this.filterByType(); 
   }
 }

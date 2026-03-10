@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core'; // 1. Import ChangeDetectorRef
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core'; 
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 import { MenuService, MenuItem } from '../../services/menu.service';
@@ -7,7 +7,7 @@ import { MenuService, MenuItem } from '../../services/menu.service';
   selector: 'app-menu',
   standalone: true,
   imports: [CommonModule, RouterModule],
-  templateUrl: './menu.html', // Ensure this matches your file name
+  templateUrl: './menu.html', 
   styleUrls: ['./menu.css']
 })
 export class MenuComponent implements OnInit {
@@ -21,13 +21,13 @@ export class MenuComponent implements OnInit {
   constructor(
     private menuService: MenuService, 
     private router: Router,
-    private cd: ChangeDetectorRef // 2. Inject it here
+    private cd: ChangeDetectorRef 
   ) {}
 
   ngOnInit(): void {
     this.isLoading = true;
     
-    // Fetch data immediately
+  
     this.menuService.getMenu().subscribe({
       next: (data) => {
         console.log('Data fetched successfully');

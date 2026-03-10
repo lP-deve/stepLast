@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterModule, Router } from '@angular/router'; // Import Router
+import { RouterModule, Router } from '@angular/router'; 
 
 @Component({
   selector: 'app-navbar',
@@ -11,13 +11,12 @@ import { RouterModule, Router } from '@angular/router'; // Import Router
 export class Navbar {
   isMenuOpen: boolean = false;
 
-  constructor(private router: Router) {} // Inject Router
+  constructor(private router: Router) {}
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
   }
 
-  // New method to explicitly close the menu
   closeMenu() {
     this.isMenuOpen = false;
   }

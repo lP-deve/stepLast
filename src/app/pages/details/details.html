@@ -1,12 +1,12 @@
  <section>
-      <!-- Loader -->
+     
       @if (isLoading()) {
         <div id="loader" class="loader">
           {{ errorMessage() || 'Loading blog...' }}
         </div>
       }
 
-      <!-- Blog Detail -->
+      
       @if (!isLoading() && article(); as data) {
         <div id="blog">
           <div class="btn">

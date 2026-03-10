@@ -2,7 +2,7 @@
   <div *ngIf="!token()" class="auth-page">
     <div class="auth-container">
       <div class="auth-box">
-        <h1>Unique</h1>
+    
         <h3>{{ view() === 'signin' ? 'Sign In' : 'Create Account' }}</h3>
 
         <form class="myform" (submit)="view() === 'signin' ? handleSignIn($event) : handleSignUp($event)">
@@ -63,7 +63,6 @@
 
     <div class="bookATable">
       <div class="details-of-booking">
-
         <ng-container *ngIf="activeTab() === 'form'">
           <h3>Book a table</h3>
           <p>Our dining atmosphere is casual and comfortable.</p>
@@ -88,34 +87,31 @@
           <h3>Your Bookings</h3>
           <div class="booking-history-list">
             <div *ngFor="let item of bookings()" class="history-item">
-              
               <div *ngIf="editingId() !== item.id" class="history-content">
                 <div class="info">
                   <strong>{{item.name}}</strong>
                   <span>{{item.date}} at {{item.time}} — {{item.guests}} Guests</span>
                 </div>
                 <div class="actions">
-                  <button (click)="startEdit(item)" class="edit-btn">Edit</button>
-                  <button (click)="deleteBooking(item.id)" class="del-btn">Delete</button>
+                  <button (click)="startEdit(item)" class="edit-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="white" d="M5 21h14c1.1 0 2-.9 2-2v-8h-2v8H5V5h8V3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2"/><path fill="white" d="M7 14v2c0 .55.45 1 1 1h2c.27 0 .52-.11.71-.29l7.65-7.65l-3.41-3.41L7.3 13.3a1 1 0 0 0-.29.71Zm13.71-7.29a.996.996 0 0 0 0-1.41l-2-2a.996.996 0 0 0-1.41 0l-1.65 1.65l3.41 3.41z"/></svg>
+                  </button>
+                  <button (click)="deleteBooking(item.id)" class="del-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="white" d="M7 21q-.825 0-1.412-.587T5 19V6q-.425 0-.712-.288T4 5t.288-.712T5 4h4q0-.425.288-.712T10 3h4q.425 0 .713.288T15 4h4q.425 0 .713.288T20 5t-.288.713T19 6v13q0 .825-.587 1.413T17 21zM17 6H7v13h10zm-6.287 10.713Q11 16.425 11 16V9q0-.425-.288-.712T10 8t-.712.288T9 9v7q0 .425.288.713T10 17t.713-.288m4 0Q15 16.426 15 16V9q0-.425-.288-.712T14 8t-.712.288T13 9v7q0 .425.288.713T14 17t.713-.288M7 6v13z"/></svg>
+                  </button>
                 </div>
               </div>
 
               <div *ngIf="editingId() === item.id" class="inline-edit">
-                <div class="input">
-                  <label>Edit Name</label>
-                  <input [(ngModel)]="editForm.name" name="editName">
-                </div>
-                <div class="input">
-                  <label>Edit Guests</label>
-                  <input type="number" [(ngModel)]="editForm.guests" name="editGuests">
-                </div>
+                <div class="input"><label>Edit Name</label><input [(ngModel)]="editForm.name" name="editName"></div>
+                <div class="input"><label>Edit Guests</label><input type="number" [(ngModel)]="editForm.guests" name="editGuests"></div>
                 <div class="twoinput">
                   <div class="input"><label>Edit Date</label><input type="date" [(ngModel)]="editForm.date" name="editDate"></div>
                   <div class="input"><label>Edit Time</label><input type="time" [(ngModel)]="editForm.time" name="editTime"></div>
                 </div>
                 <div class="twoinput">
-                  <button (click)="updateBooking(item.id)" class="save-btn">Update</button>
-                  <button (click)="editingId.set(null)" class="cancel-btn">Cancel</button>
+                  <button (click)="updateBooking(item.id)" class="save-btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 20 20"><path fill="currentColor" d="m14.83 4.89l1.34.94l-5.81 8.38H9.02L5.78 9.67l1.34-1.25l2.57 2.4z"/></svg></button>
+                  <button (click)="editingId.set(null)" class="cancel-btn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path fill="currentColor" d="m12.12 10l3.53 3.53l-2.12 2.12L10 12.12l-3.54 3.54l-2.12-2.12L7.88 10L4.34 6.46l2.12-2.12L10 7.88l3.54-3.53l2.12 2.12z"/></svg></button>
                 </div>
               </div>
             </div>
@@ -124,9 +120,10 @@
         </ng-container>
       </div>
     </div>
-
-    <div class="success" [class.show]="status()">
-      <h1>{{status()}}</h1>
-    </div>
   </section>
+
+  <div class="success" [class.show]="status()">
+    
+    <h1 style="color: #fff; margin-top: 10px; font-family: cursive;">{{status()}}</h1>
+  </div>
 </main>

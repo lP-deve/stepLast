@@ -24,7 +24,7 @@ import {
   styleUrls: ['./book-table.css']
 })
 export class Book implements OnInit, OnDestroy {
- 
+  
   private firebaseConfig = {
     apiKey: "AIzaSyDCamwZvaJE_OonbfBvIWmQylRg_9WmR2w",
     authDomain: "everrest-booking.firebaseapp.com",
@@ -41,7 +41,6 @@ export class Book implements OnInit, OnDestroy {
   private appId = "everrest-booking";
   private EVERREST_API = "https://api.everrest.educata.dev";
 
-  // --- SIGNALS ---
   token = signal<string | null>(localStorage.getItem("token"));
   userId = signal<string | null>(this.extractUserId(localStorage.getItem("token")));
   view = signal<'signin' | 'signup'>('signin');
@@ -50,16 +49,13 @@ export class Book implements OnInit, OnDestroy {
   status = signal<string | null>(null);
   editingId = signal<string | null>(null);
   
-  // NEW: Tab control for the right-side container
   activeTab = signal<'form' | 'history'>('form');
 
-  // --- FORMS ---
   authForm = { email: "", password: "", firstName: "", lastName: "" };
   bookingForm = { name: "", guests: 2, date: "", time: "" };
   editForm = { name: "", guests: 2, date: "", time: "" };
 
   constructor(private ngZone: NgZone) {
-    // Sync Firestore listener when user changes
     effect(() => {
       const uid = this.userId();
       if (uid && this.db) this.listenBookings(uid);
@@ -78,13 +74,11 @@ export class Book implements OnInit, OnDestroy {
     if (this.unsubFirestore) this.unsubFirestore();
   }
 
-  // --- TAB SWITCHING ---
   setTab(tab: 'form' | 'history') {
     this.activeTab.set(tab);
-    this.editingId.set(null); // Close any open edit states
+    this.editingId.set(null);
   }
 
-  // --- JWT HELPER ---
   private extractUserId(token: string | null): string | null {
     if (!token) return null;
     try {
@@ -95,7 +89,6 @@ export class Book implements OnInit, OnDestroy {
     }
   }
 
-  // --- FIREBASE LISTENERS ---
   private listenBookings(uid: string) {
     if (this.unsubFirestore) this.unsubFirestore();
 
@@ -109,7 +102,6 @@ export class Book implements OnInit, OnDestroy {
     });
   }
 
-  // --- AUTH ACTIONS ---
   async handleSignUp(e: Event) {
     e.preventDefault();
     this.loading.set(true);
@@ -130,11 +122,14 @@ export class Book implements OnInit, OnDestroy {
           gender: "MALE"
         })
       });
-      if (!res.ok) throw new Error("Signup failed");
+      if (!res.ok) {
+        const errData = await res.json();
+        throw new Error(errData.message || "Signup failed");
+      }
       this.showStatus("Account created");
       this.view.set("signin");
     } catch (err: any) {
-      alert(err.message);
+      this.showStatus(err.message);
     } finally { this.loading.set(false); }
   }
 
@@ -148,7 +143,7 @@ export class Book implements OnInit, OnDestroy {
         body: JSON.stringify({ email: this.authForm.email, password: this.authForm.password })
       });
       const data = await res.json();
-      if (!res.ok) throw new Error(data.message);
+      if (!res.ok) throw new Error(data.message || "Login failed");
 
       const token = data.access_token;
       localStorage.setItem("token", token);
@@ -156,7 +151,7 @@ export class Book implements OnInit, OnDestroy {
       this.userId.set(this.extractUserId(token));
       this.showStatus("Welcome back!");
     } catch (err: any) {
-      alert(err.message);
+      this.showStatus(err.message);
     } finally { this.loading.set(false); }
   }
 
@@ -167,7 +162,6 @@ export class Book implements OnInit, OnDestroy {
     this.bookings.set([]);
   }
 
-  // --- BOOKING CRUD ---
   async saveBooking(e: Event) {
     e.preventDefault();
     const uid = this.userId();
@@ -188,29 +182,23 @@ export class Book implements OnInit, OnDestroy {
 
       this.bookingForm = { name: "", guests: 2, date: "", time: "" };
       this.showStatus("Table ordered successfully!");
-      this.setTab('history'); // Automatically switch to see the new booking
+      this.setTab('history'); 
     } catch (err: any) {
-      alert(err.message);
+      this.showStatus(err.message);
     } finally { this.loading.set(false); }
   }
 
-   async deleteBooking(id: string) {
-  const uid = this.userId();
-  
-  
-  if (!uid) return; 
+  async deleteBooking(id: string) {
+    const uid = this.userId();
+    if (!uid) return; 
 
-  try {
-  
-    await deleteDoc(doc(this.db, `artifacts/${this.appId}/users/${uid}/reservations/${id}`));
-    
-
-    this.showStatus("Reservation removed");
-  } catch (error) {
-    console.error("Delete failed:", error);
-    this.showStatus("Error removing reservation");
+    try {
+      await deleteDoc(doc(this.db, `artifacts/${this.appId}/users/${uid}/reservations/${id}`));
+      this.showStatus("Reservation removed");
+    } catch (error) {
+      this.showStatus("Error removing reservation");
+    }
   }
-}
 
   startEdit(item: any) {
     this.editingId.set(item.id);
@@ -235,13 +223,14 @@ export class Book implements OnInit, OnDestroy {
       this.editingId.set(null);
       this.showStatus("Booking updated");
     } catch (err: any) {
-      alert("Error: " + err.message);
+      this.showStatus("Error: " + err.message);
     }
   }
 
-  // --- UI HELPERS ---
   private showStatus(msg: string) {
-    this.status.set(msg);
-    setTimeout(() => this.status.set(null), 3000);
+    this.ngZone.run(() => {
+        this.status.set(msg);
+        setTimeout(() => this.status.set(null), 3000);
+    });
   }
 }

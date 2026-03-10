@@ -20,7 +20,7 @@ export interface Article {
 })
 export class App implements OnInit {
   private http = inject(HttpClient);
-  private router = inject(Router); // Inject Router
+  private router = inject(Router); 
   private readonly API_URL = 'https://694d541bad0f8c8e6e20679f.mockapi.io/articles';
 
   articles = signal<Article[]>([]);
@@ -50,15 +50,13 @@ export class App implements OnInit {
     }
     return dateStr;
   }
-/**
- * Handles image loading errors by hiding the broken image
- */
+
 handleImgError(event: Event): void {
   const target = event.target as HTMLImageElement;
   target.style.display = 'none';
 }
 
-  // Navigate to details page with query param `id`
+ 
   navigateToFullBlog(id: string): void {
     this.router.navigate(['/details'], { queryParams: { id } });
   }

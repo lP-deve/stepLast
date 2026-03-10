@@ -3,13 +3,13 @@
     <div class="news">
       <a routerLink="/"><h1>Unique</h1></a>
 
-      <!-- Hero Branding -->
+   
       <div class="hero">
         <span>Blog</span>
         <h2>Latest News</h2>
       </div>
 
-      <!-- Navigation Menu -->
+  
       <div class="navItems">
         <nav>
           <ul>
@@ -22,7 +22,7 @@
         </nav>
       </div>
     </div>
-    <!-- Desktop Hero Sidebar Image -->
+    
     <img
       id="img"
       src="/bl.jpg"
@@ -30,10 +30,10 @@
     />
   </div>
 
-  <!-- Articles List Section -->
+  
   <div class="infos">
     <div class="cont">
-      <!-- Check if articles are available -->
+     
       <ng-container *ngIf="articles().length > 0; else loading">
         <div
           class="blogs"
@@ -53,7 +53,7 @@
         </div>
       </ng-container>
 
-      <!-- Loading / Empty State -->
+      
       <ng-template #loading>
         <div class="loading-state">
           <p>Fetching the latest blog posts...</p>

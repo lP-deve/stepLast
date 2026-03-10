@@ -9,7 +9,7 @@ import { signal } from '@angular/core';
 })
 export class Story {
 
-  // Using Angular Signal for state management
+
   isMenuOpen = signal(false);
 
   toggleMenu() {

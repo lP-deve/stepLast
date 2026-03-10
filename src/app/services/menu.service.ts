@@ -7,9 +7,9 @@ export interface MenuItem {
   name: string;
   price: string;
   image: string;
-  type: string;        // 'food', 'lunch', 'dinner', 'drink'
+  type: string;        
   ingredients: string; 
-  calories: string;    // Required for your sort logic
+  calories: string; 
   flavor?: string;
   size?: string;
 }
